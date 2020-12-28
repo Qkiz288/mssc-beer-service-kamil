@@ -2,12 +2,14 @@ package com.kkukielka.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kkukielka.web.model.BeerDto;
+import com.kkukielka.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,7 +34,12 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        BeerDto newBeer = BeerDto.builder().build();
+        BeerDto newBeer = BeerDto.builder()
+                .beerName("Test Beer")
+                .beerStyle(BeerStyleEnum.IPA)
+                .upc(123456789L)
+                .price(new BigDecimal(5))
+                .build();
         String newBeerJson = objectMapper.writeValueAsString(newBeer);
 
         mockMvc.perform(post("/api/v1/beer")
@@ -44,7 +51,12 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
-        BeerDto updatedBeer = BeerDto.builder().build();
+        BeerDto updatedBeer = BeerDto.builder()
+                .beerName("Test Beer")
+                .beerStyle(BeerStyleEnum.IPA)
+                .upc(123456789L)
+                .price(new BigDecimal(5))
+                .build();
         String updatedBeerJson = objectMapper.writeValueAsString(updatedBeer);
 
         mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
