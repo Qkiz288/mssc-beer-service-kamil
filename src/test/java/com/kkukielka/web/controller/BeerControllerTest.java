@@ -1,6 +1,7 @@
 package com.kkukielka.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kkukielka.bootstrap.BeerLoader;
 import com.kkukielka.services.BeerService;
 import com.kkukielka.web.model.BeerDto;
 import com.kkukielka.web.model.BeerStyleEnum;
@@ -73,7 +74,7 @@ class BeerControllerTest {
         return BeerDto.builder()
                 .beerName("Test Beer")
                 .beerStyle(BeerStyleEnum.IPA)
-                .upc(123456789L)
+                .upc(BeerLoader.BEER_1_UPC)
                 .price(new BigDecimal("1.00"))
                 .build();
     }
