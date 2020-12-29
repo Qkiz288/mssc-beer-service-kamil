@@ -1,11 +1,14 @@
 package com.kkukielka.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kkukielka.bootstrap.BeerLoader;
+import com.kkukielka.services.BeerService;
 import com.kkukielka.web.model.BeerDto;
 import com.kkukielka.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -13,6 +16,8 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -25,8 +30,13 @@ class BeerControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @MockBean
+    BeerService beerService;
+
     @Test
     void getBeerById() throws Exception {
+        given(beerService.getById(any())).willReturn(getValidBeerDto());
+
         mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString())
                 .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
@@ -34,13 +44,10 @@ class BeerControllerTest {
 
     @Test
     void saveNewBeer() throws Exception {
-        BeerDto newBeer = BeerDto.builder()
-                .beerName("Test Beer")
-                .beerStyle(BeerStyleEnum.IPA)
-                .upc(123456789L)
-                .price(new BigDecimal(5))
-                .build();
+        BeerDto newBeer = getValidBeerDto();
         String newBeerJson = objectMapper.writeValueAsString(newBeer);
+
+        given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
 
         mockMvc.perform(post("/api/v1/beer")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -51,18 +58,24 @@ class BeerControllerTest {
 
     @Test
     void updateBeerById() throws Exception {
-        BeerDto updatedBeer = BeerDto.builder()
-                .beerName("Test Beer")
-                .beerStyle(BeerStyleEnum.IPA)
-                .upc(123456789L)
-                .price(new BigDecimal(5))
-                .build();
+        BeerDto updatedBeer = getValidBeerDto();
         String updatedBeerJson = objectMapper.writeValueAsString(updatedBeer);
+
+        given(beerService.updateBeer(any(), any())).willReturn(getValidBeerDto());
 
         mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
             .contentType(MediaType.APPLICATION_JSON)
             .content(updatedBeerJson)
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isNoContent());
+    }
+
+    private BeerDto getValidBeerDto() {
+        return BeerDto.builder()
+                .beerName("Test Beer")
+                .beerStyle(BeerStyleEnum.IPA)
+                .upc(BeerLoader.BEER_1_UPC)
+                .price(new BigDecimal("1.00"))
+                .build();
     }
 }
