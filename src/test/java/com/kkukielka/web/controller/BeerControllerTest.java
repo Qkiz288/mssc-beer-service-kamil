@@ -6,12 +6,14 @@ import com.kkukielka.services.BeerService;
 import com.kkukielka.web.model.BeerDto;
 import com.kkukielka.web.model.BeerPagedList;
 import com.kkukielka.web.model.BeerStyleEnum;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BeerController.class)
@@ -97,6 +100,24 @@ class BeerControllerTest {
             .content(updatedBeerJson)
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isNoContent());
+    }
+
+    @Test
+    void getBeerByUpc() throws Exception {
+        given(beerService.getByUpc(anyString())).willReturn(getValidBeerDto());
+        BeerDto expectedBeerDto = getValidBeerDto();
+
+        MvcResult result = mockMvc.perform(get("/api/v1/beerUpc/" + BeerLoader.BEER_1_UPC)
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+        String responseBody = result.getResponse().getContentAsString();
+        BeerDto responseBeer = objectMapper.readValue(responseBody, BeerDto.class);
+
+        Assertions.assertEquals(responseBeer.getBeerName(), expectedBeerDto.getBeerName());
+        Assertions.assertEquals(responseBeer.getBeerStyle(), expectedBeerDto.getBeerStyle());
+        Assertions.assertEquals(responseBeer.getUpc(), expectedBeerDto.getUpc());
+        Assertions.assertEquals(responseBeer.getPrice(), expectedBeerDto.getPrice());
     }
 
     private BeerDto getValidBeerDto() {

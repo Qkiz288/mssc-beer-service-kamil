@@ -1,5 +1,6 @@
 package com.kkukielka.services;
 
+import com.kkukielka.bootstrap.BeerLoader;
 import com.kkukielka.mappers.BeerMapper;
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.web.domain.Beer;
@@ -25,7 +26,7 @@ import static org.mockito.BDDMockito.given;
 @SpringBootTest
 class BeerServiceImplTest {
 
-    private final String UPC = "123456789";
+    private final String UPC = BeerLoader.BEER_1_UPC;
 
     @Mock
     BeerRepository beerRepository;
