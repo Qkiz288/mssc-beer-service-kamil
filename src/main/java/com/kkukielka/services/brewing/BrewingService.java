@@ -1,4 +1,4 @@
-package com.kkukielka.services;
+package com.kkukielka.services.brewing;
 
 import com.kkukielka.config.JmsConfig;
 import com.kkukielka.events.BrewBeerEvent;
