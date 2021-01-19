@@ -1,8 +1,8 @@
 package com.kkukielka.services.brewing;
 
 import com.kkukielka.config.JmsConfig;
-import com.kkukielka.events.BrewBeerEvent;
-import com.kkukielka.events.NewInventoryEvent;
+import com.kkukielka.common.events.BrewBeerEvent;
+import com.kkukielka.common.events.NewInventoryEvent;
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.web.domain.Beer;
 import com.kkukielka.web.model.BeerDto;

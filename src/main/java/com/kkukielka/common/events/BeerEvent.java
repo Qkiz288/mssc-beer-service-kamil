@@ -1,4 +1,4 @@
-package com.kkukielka.events;
+package com.kkukielka.common.events;
 
 import com.kkukielka.web.model.BeerDto;
 import lombok.*;

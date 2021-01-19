@@ -1,7 +1,7 @@
 package com.kkukielka.services.brewing;
 
 import com.kkukielka.config.JmsConfig;
-import com.kkukielka.events.BrewBeerEvent;
+import com.kkukielka.common.events.BrewBeerEvent;
 import com.kkukielka.mappers.BeerMapper;
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.services.inventory.BeerInventoryService;
