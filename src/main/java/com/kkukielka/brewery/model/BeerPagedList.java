@@ -1,4 +1,4 @@
-package com.kkukielka.web.model;
+package com.kkukielka.brewery.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

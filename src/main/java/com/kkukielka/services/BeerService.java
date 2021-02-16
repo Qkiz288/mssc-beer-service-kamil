@@ -1,8 +1,8 @@
 package com.kkukielka.services;
 
-import com.kkukielka.web.model.BeerDto;
-import com.kkukielka.web.model.BeerPagedList;
-import com.kkukielka.web.model.BeerStyleEnum;
+import com.kkukielka.brewery.model.BeerDto;
+import com.kkukielka.brewery.model.BeerPagedList;
+import com.kkukielka.brewery.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.UUID;

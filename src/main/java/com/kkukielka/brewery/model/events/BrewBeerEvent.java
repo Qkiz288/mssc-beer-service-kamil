@@ -1,6 +1,6 @@
-package com.kkukielka.common.events;
+package com.kkukielka.brewery.model.events;
 
-import com.kkukielka.web.model.BeerDto;
+import com.kkukielka.brewery.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

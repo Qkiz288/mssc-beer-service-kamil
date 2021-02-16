@@ -1,7 +1,7 @@
 package com.kkukielka.mappers;
 
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerDto;
+import com.kkukielka.brewery.model.BeerDto;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 

@@ -3,9 +3,9 @@ package com.kkukielka.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kkukielka.bootstrap.BeerLoader;
 import com.kkukielka.services.BeerService;
-import com.kkukielka.web.model.BeerDto;
-import com.kkukielka.web.model.BeerPagedList;
-import com.kkukielka.web.model.BeerStyleEnum;
+import com.kkukielka.brewery.model.BeerDto;
+import com.kkukielka.brewery.model.BeerPagedList;
+import com.kkukielka.brewery.model.BeerStyleEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,6 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BeerController.class)

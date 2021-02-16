@@ -1,7 +1,7 @@
 package com.kkukielka.repositories;
 
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerStyleEnum;
+import com.kkukielka.brewery.model.BeerStyleEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
