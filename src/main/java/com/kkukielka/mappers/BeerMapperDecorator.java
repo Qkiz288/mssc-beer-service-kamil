@@ -2,7 +2,7 @@ package com.kkukielka.mappers;
 
 import com.kkukielka.services.inventory.BeerInventoryService;
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerDto;
+import com.kkukielka.brewery.model.BeerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class BeerMapperDecorator implements BeerMapper {

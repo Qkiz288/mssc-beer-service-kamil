@@ -1,4 +1,4 @@
-package com.kkukielka.web.model;
+package com.kkukielka.brewery.model;
 
 public enum BeerStyleEnum {
     LAGER, PILSNER, STOUT, GOSE, PORTER, ALE, WHEAT, IPA, PALE_ALE, SAISON

@@ -4,8 +4,8 @@ import com.kkukielka.bootstrap.BeerLoader;
 import com.kkukielka.mappers.BeerMapper;
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerDto;
-import com.kkukielka.web.model.BeerStyleEnum;
+import com.kkukielka.brewery.model.BeerDto;
+import com.kkukielka.brewery.model.BeerStyleEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 

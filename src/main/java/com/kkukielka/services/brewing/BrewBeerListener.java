@@ -1,11 +1,11 @@
 package com.kkukielka.services.brewing;
 
 import com.kkukielka.config.JmsConfig;
-import com.kkukielka.common.events.BrewBeerEvent;
-import com.kkukielka.common.events.NewInventoryEvent;
+import com.kkukielka.brewery.model.events.BrewBeerEvent;
+import com.kkukielka.brewery.model.events.NewInventoryEvent;
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerDto;
+import com.kkukielka.brewery.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;

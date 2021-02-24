@@ -2,7 +2,7 @@ package com.kkukielka.bootstrap;
 
 import com.kkukielka.repositories.BeerRepository;
 import com.kkukielka.web.domain.Beer;
-import com.kkukielka.web.model.BeerStyleEnum;
+import com.kkukielka.brewery.model.BeerStyleEnum;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
