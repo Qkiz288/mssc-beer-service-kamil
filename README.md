@@ -11,4 +11,10 @@ Repository created to complete Microservices course on Udemy
 
 In order to run the application with local MySQL DB:
  - MySQL service has to be installed locally.
- - When running the main class, in `Edit Configuration / VM Options` add `-Dspring.profiles.active=localmysql` profile. 
+ - When running the main class, in `Edit Configuration / VM Options` add `-Dspring.profiles.active=localmysql` profile.
+ 
+ To run ActiveMQ:
+ 
+ `docker run -it --rm   -p 8161:8161   -p 61616:61616   vromero/activemq-artemis`
+ 
+[More info on ActiveMQ with Docker](https://github.com/vromero/activemq-artemis-docker)
