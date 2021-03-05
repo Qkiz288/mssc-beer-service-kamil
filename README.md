@@ -18,3 +18,5 @@ In order to run the application with local MySQL DB:
  `docker run -it --rm   -p 8161:8161   -p 61616:61616   vromero/activemq-artemis`
  
 [More info on ActiveMQ with Docker](https://github.com/vromero/activemq-artemis-docker)
+
+To register service in local Eureka, `local-discovery` profile has to be set
