@@ -9,3 +9,18 @@ services:
     image: openzipkin/zipkin
     ports:
       - 9411:9411
+  eureka:
+    image: qkiz288/mssc-brewery-eureka
+    ports:
+      - 8761:8761
+  config:
+    image: qkiz288/mssc-config-server
+    ports:
+      - 8888:8888
+    depends_on:
+      - eureka
+#    Eureka is running on locahost of it's docker container. Config server is running on locahost of it's docker container
+#    Result: Config server doesn't see the Eureka because they are running in different docker containers
+#    Solution: specify for Config server where to look for eureka
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
