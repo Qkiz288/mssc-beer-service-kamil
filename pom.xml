@@ -12,10 +12,9 @@
     <artifactId>mssc-beer-service-kamil</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<!--    uncomment below property if you want to push docker image to your docker hub-->
-<!--    <properties>-->
-<!--        <docker.image.prefix>qkiz288</docker.image.prefix>-->
-<!--    </properties>-->
+    <properties>
+        <docker.image.prefix>qkiz288</docker.image.prefix>
+    </properties>
 
     <dependencies>
         <dependency>
