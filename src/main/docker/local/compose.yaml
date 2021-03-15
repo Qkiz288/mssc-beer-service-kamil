@@ -37,9 +37,10 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
       SPRING_PROFILES_ACTIVE: local-discovery,localmysql
-      SPRING_ZIPKIN_BASEURL: http://zipkin
+      SPRING_ZIPKIN_BASEURL: http://zipkin:9411
       SPRING_ARTEMIS_HOST: jms
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerinventoryservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    restart: on-failure
   inventory-failover:
     image: qkiz288/mssc-inventory-failover
     ports:
@@ -64,9 +65,10 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
       SPRING_PROFILES_ACTIVE: local-discovery,localmysql
-      SPRING_ZIPKIN_BASEURL: http://zipkin
+      SPRING_ZIPKIN_BASEURL: http://zipkin:9411
       SPRING_ARTEMIS_HOST: jms
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    restart: on-failure
   order-service:
     image: qkiz288/mssc-beer-order-service
     ports:
@@ -80,10 +82,11 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
       SPRING_PROFILES_ACTIVE: local-discovery,localmysql
-      SPRING_ZIPKIN_BASEURL: http://zipkin
+      SPRING_ZIPKIN_BASEURL: http://zipkin:9411
       SPRING_ARTEMIS_HOST: jms
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerorderservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       SFG_BREWERY_BEER-SERVICE-HOST: http://beer-service:8080
+    restart: on-failure
   sfg-brewery-gateway:
     image: qkiz288/mssc-brewery-gateway
     ports:
@@ -99,3 +102,4 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
       SPRING_PROFILES_ACTIVE: local-discovery
+    restart: on-failure
