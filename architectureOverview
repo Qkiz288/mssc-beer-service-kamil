@@ -1,0 +1,23 @@
+GATEWAY - serves as a gateway for CONFIG SERVICE, BEER SERVICE, ORDER SERVICE, INVENTORY SERVICE,
+INVENTORY FAILOVER SERVICE and routes the traffic with Load Balancer
+
+CONFIG REPO - provides properties to CONFIG SERVICE
+
+CONFIG SERVICE - fetches the properties from CONFIG REPO and provides them for BEER SERVICE, ORDER SERVICE, INVENTORY
+SERVICE
+
+EUREKA - Service Registration and Discovery service used by CONFIG SERVICE, BEER SERVICE, ORDER SERVICE,
+INVENTORY SERVICE, INVENTORY FAILOVER SERVICE
+
+BEER SERVICE - Service which listens to BREWING_REQUEST_QUEUE, checks for low inventory in INVENTORY SERVICE and brews
+beer if inventory is low
+
+ORDER SERVICE - places orders in TastingRoomService, handles NEW -> PICKED_UP state transition saga
+
+INVENTORY SERVICE - manages information about beer stock, receives brewed beer data from BEER SERVICE
+
+INVENTORY FAILOVER SERVICE - service which is a fallback service if INVENTORY SERVICE is down
+
+MYSQL DB - MySQL database for BEER SERVICE, ORDER SERVICE, INVENTORY SERVICE
+
+ACTIVEMQ - message broker used for communication between BEER SERVICE, ORDER SERVICE, INVENTORY SERVICE
