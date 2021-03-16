@@ -19,5 +19,19 @@ Repository created to complete Microservices course on Udemy
 
 3. To register service in local Eureka, `local-discovery` profile has to be set
 
-4. To run Zipkin:
-- `docker run -d -p 9411:9411 openzipkin/zipkin`
+4. To open Eureka console, go to: `http://localhost:8761/`
+
+5. To run Zipkin:
+    - `docker run -d -p 9411:9411 openzipkin/zipkin`
+
+6. To push the Docker image to your docker hub:
+    - in maven `settings.xml` add:<br />
+    `<servers>`<br />
+    `<server>`<br />
+    `<id>docker.io</id>`<br />
+    `<username>dockerhub_login</username>`<br />
+    `<password>dockerhub_password</password>`<br />
+    `</server>`<br />
+    `</servers>`
+    - In `pom.xml` set `qkiz288` as `docker.image.prefix` property
+    - run: `mvn clean package docker:build docker:push`
